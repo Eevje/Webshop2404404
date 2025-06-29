@@ -21,9 +21,9 @@
 <form method="post">
     <div style="display:flex; align-items:center; gap:0.5rem;">
         <label for="quantity"><strong>Aantal:</strong></label>
-        <button type="button" onclick="updateQuantity(-1)" class="btn btn-outline-secondary btn-sm">-</button>
+        <button type="button" onclick="adjust(-1)" class="btn btn-outline-secondary btn-sm">-</button>
         <input type="number" id="quantity" name="Quantity" value="1" min="1" style="width:60px; text-align:center;" />
-        <button type="button" onclick="updateQuantity(1)" class="btn btn-outline-secondary btn-sm">+</button>
+        <button type="button" onclick="adjust(1)" class="btn btn-outline-secondary btn-sm">+</button>
     </div>
     <br />
     <button type="submit" class="btn btn-success">Toevoegen aan winkelmandje</button>

@@ -62,7 +62,8 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Products
             HttpContext.Session.SetObject("Cart", cart);
 
             TempData["Message"] = $"{Quantity}x {Product.Name} toegevoegd aan winkelmandje.";
-            return RedirectToPage("Index");
+            return Page();
+
         }
     }
 }
