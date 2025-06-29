@@ -1,0 +1,33 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Products.IndexModel
+@{
+	ViewData["Title"] = "Producten";
+}
+
+<h1>Productenoverzicht</h1>
+
+<div class="product-list">
+    @foreach (var product in Model.Products)
+    {
+        <div class="product-card">
+            <h3>@product.Name</h3>
+            <p>Prijs: €@product.Price</p>
+            <a asp-page="/Products/Details" asp-route-id="@product.Id">Bekijk</a>
+        </div>
+    }
+</div>
+
+<style>
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .product-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        width: 200px;
+        border-radius: 8px;
+    }
+</style>

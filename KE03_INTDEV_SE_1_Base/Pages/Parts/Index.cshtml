@@ -1,0 +1,33 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Parts.IndexModel
+@{
+    ViewData["Title"] = "Onderdelen";
+}
+
+<h1>Onderdelenoverzicht</h1>
+
+<div class="part-list">
+    @foreach (var part in Model.Parts)
+    {
+        <div class="part-card">
+            <h3>@part.Name</h3>
+            <p>Prijs: €@part.Price</p>
+            <a asp-page="/Parts/Details" asp-route-id="@part.Id">Bekijk</a>
+        </div>
+    }
+</div>
+
+<style>
+    .part-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .part-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        width: 200px;
+        border-radius: 8px;
+    }
+</style>
