@@ -1,0 +1,32 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Profile.OrderHistoryModel
+@{
+    ViewData["Title"] = "Orderhistorie";
+}
+
+<h1>Orderhistorie</h1>
+
+@if (Model.Customers == null || !Model.Customers.Any())
+{
+    <p>Er zijn nog geen klanten of orders.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Klant</th>
+                <th>Aantal Orders</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Customers)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>@c.Orders.Count()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
