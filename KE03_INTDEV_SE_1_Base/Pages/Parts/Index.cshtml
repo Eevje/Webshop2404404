@@ -4,30 +4,72 @@
     ViewData["Title"] = "Onderdelen";
 }
 
-<h1>Onderdelenoverzicht</h1>
+<h1 class="mb-4">Onderdelenoverzicht</h1>
 
-<div class="part-list">
+<div class="product-list">
     @foreach (var part in Model.Parts)
     {
-        <div class="part-card">
+        <div class="product-card">
+            <img src="@part.ImageUrl" alt="Afbeelding van @part.Name" />
             <h3>@part.Name</h3>
-            <p>Prijs: €@part.Price</p>
-            <a asp-page="/Parts/Details" asp-route-id="@part.Id">Bekijk</a>
+            <p class="description">@part.Description</p>
+            <p><strong>Prijs:</strong> €@part.Price.ToString("F2")</p>
+            <a class="btn btn-primary btn-sm" asp-page="/Parts/Details" asp-route-id="@part.Id">Bekijk</a>
         </div>
     }
 </div>
 
 <style>
-    .part-list {
+    .product-list {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
     }
 
-    .part-card {
+    .product-card {
         border: 1px solid #ccc;
         padding: 1rem;
-        width: 200px;
-        border-radius: 8px;
+        width: 220px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #f9f9f9;
+        overflow: hidden;
     }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Titel styling */
+        .product-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        /* Beschrijving max 2 regels met ellipsis */
+        .product-card .description {
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.5rem;
+            min-height: 2.6em; /* Zorg dat alle cards even hoog blijven */
+        }
+
+    /* Knop netjes onderaan */
+    .btn {
+        margin-top: auto;
+    }
+
 </style>

@@ -16,6 +16,8 @@ namespace DataAccessLayer.Models
 
         public decimal Price { get; set; }
 
+        public string? ImageUrl { get; set; }
+
         public ICollection<Product> Products { get; } = new List<Product>();
     }
 }
