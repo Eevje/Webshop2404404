@@ -6,6 +6,13 @@
 
 <h1>@Model.Part.Name</h1>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 <img src="@Model.Part.ImageUrl" alt="Afbeelding van @Model.Part.Name" style="width:300px; height:auto; margin-bottom:1rem;" />
 
 <p><strong>Beschrijving:</strong> @Model.Part.Description</p>
@@ -22,14 +29,15 @@
     <button type="submit" class="btn btn-success">Toevoegen aan winkelmandje</button>
 </form>
 
-<a class="btn btn-secondary mt-3" asp-page="/Parts/Index">← Terug naar overzicht</a>
+<a class="btn btn-secondary mt-3" asp-page="/Products/Index">← Terug naar overzicht</a>
 
 @section Scripts {
     <script>
-        function updateQuantity(change) {
-            var input = document.getElementById('quantity');
-            var newValue = Math.max(1, parseInt(input.value) + change);
-            input.value = newValue;
-        }
+        function adjust(amount) {
+                const input = document.getElementById("quantity");
+                let val = parseInt(input.value) || 1;
+                val = Math.max(1, val + amount);
+                input.value = val;
+            }
     </script>
 }

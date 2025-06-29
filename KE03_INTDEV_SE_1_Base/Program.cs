@@ -22,6 +22,17 @@ namespace KE03_INTDEV_SE_1_Base
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IPartRepository, PartRepository>();
 
+            // Sessie inschakelen
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Tijd voordat sessie verloopt
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            // Nodig voor sessietoegang binnen helpers/controllers
+            builder.Services.AddHttpContextAccessor();
+
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -48,6 +59,8 @@ namespace KE03_INTDEV_SE_1_Base
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

@@ -1,0 +1,44 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.Cart.CartModel
+@{
+    ViewData["Title"] = "Winkelmandje";
+}
+
+<h1>Winkelmandje</h1>
+
+@if (Model.Items == null || !Model.Items.Any())
+{
+    <p>Je winkelmandje is leeg.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Afbeelding</th>
+                <th>Product</th>
+                <th>Prijs</th>
+                <th>Aantal</th>
+                <th>Subtotaal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td><img src="@item.ImageUrl" width="60" alt="@item.ProductName" /></td>
+                    <td>@item.ProductName</td>
+                    <td>€@item.Price.ToString("F2")</td>
+                    <td>@item.Quantity</td>
+                    <td>€@((item.Quantity * item.Price).ToString("F2"))</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-end"><strong>Totaal:</strong></td>
+                <td><strong>€@Model.Total.ToString("F2")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+}

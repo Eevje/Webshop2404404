@@ -6,6 +6,13 @@
 
 <h1>@Model.Product.Name</h1>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 <img src="@Model.Product.ImageUrl" alt="Afbeelding van @Model.Product.Name" style="width:300px; height:auto; margin-bottom:1rem;" />
 
 <p><strong>Beschrijving:</strong> @Model.Product.Description</p>
@@ -26,10 +33,11 @@
 
 @section Scripts {
     <script>
-        function updateQuantity(change) {
-            var input = document.getElementById('quantity');
-            var newValue = Math.max(1, parseInt(input.value) + change);
-            input.value = newValue;
-        }
+        function adjust(amount) {
+                const input = document.getElementById("quantity");
+                let val = parseInt(input.value) || 1;
+                val = Math.max(1, val + amount);
+                input.value = val;
+            }
     </script>
 }
