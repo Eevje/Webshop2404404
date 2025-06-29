@@ -1,0 +1,35 @@
+﻿@page "{id:int}"
+@model KE03_INTDEV_SE_1_Base.Pages.Products.DetailsModel
+@{
+    ViewData["Title"] = "Productdetails";
+}
+
+<h1>@Model.Product.Name</h1>
+
+<img src="@Model.Product.ImageUrl" alt="Afbeelding van @Model.Product.Name" style="width:300px; height:auto; margin-bottom:1rem;" />
+
+<p><strong>Beschrijving:</strong> @Model.Product.Description</p>
+<p><strong>Prijs:</strong> €@Model.Product.Price.ToString("F2")</p>
+
+<form method="post">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+        <label for="quantity"><strong>Aantal:</strong></label>
+        <button type="button" onclick="updateQuantity(-1)" class="btn btn-outline-secondary btn-sm">-</button>
+        <input type="number" id="quantity" name="Quantity" value="1" min="1" style="width:60px; text-align:center;" />
+        <button type="button" onclick="updateQuantity(1)" class="btn btn-outline-secondary btn-sm">+</button>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Toevoegen aan winkelmandje</button>
+</form>
+
+<a class="btn btn-secondary mt-3" asp-page="/Products/Index">← Terug naar overzicht</a>
+
+@section Scripts {
+    <script>
+        function updateQuantity(change) {
+            var input = document.getElementById('quantity');
+            var newValue = Math.max(1, parseInt(input.value) + change);
+            input.value = newValue;
+        }
+    </script>
+}

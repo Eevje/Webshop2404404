@@ -41,8 +41,8 @@ namespace DataAccessLayer
 
             var products = new Product[]
             {
-                new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m, ImageUrl = "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:so362smrcoypah6gusrtkqvz/bafkreico4i7tipgw7ccv6brnfdug45tql45wdeaq3liopupfdjefc6k6um@jpeg" },
-                new Product { Name = "Jack-in Chair", Description = "Stoel met een rugsteun en metalen armen waarin mensen zitten om ingeplugd te worden in de Matrix via een kabel in de nekpoort", Price = 500.50m, ImageUrl = "https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/2d5b01cc30cc15b24e134c1a519924e4/large.png" },
+                new Product { Name = "Nebuchadnezzar", Description = "Het schip waarop Neo voor het eerst de echte wereld leert kennen", Price = 10000.00m, ImageUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQ2Nhb1hIsYWIiz4j5-g48-zUkTY4IPaQkMr4ln91BK4hvPWe8_QqcNOou9Bc1QYpX6xxc5CEabBlNwr2ysWgi15EmPXRnn11DhyphenhyphenOtVuGwEszYepf4uPGySBrEHw8-GP_GQ8S_J29UqaiG/s1600/babel5.jpg" },
+                new Product { Name = "Jack-in Chair", Description = "Stoel met een rugsteun en metalen armen waarin mensen zitten om ingeplugd te worden in de Matrix via een kabel in de nekpoort", Price = 500.50m, ImageUrl = "https://toyshnip.com/cdn/shop/files/nightmare-before-christmas-jack-skellington-in-chair-coffin-box-diamond-select-toyshnip-733606.jpg?v=1714755862&width=600" },
                 new Product { Name = "EMP (Electro-Magnetic Pulse) Device", Description = "Wapentuig op de schepen van Zion", Price = 129.99m, ImageUrl = "https://m.media-amazon.com/images/I/6154WVOBExL.jpg" }
             };
             context.Products.AddRange(products);
