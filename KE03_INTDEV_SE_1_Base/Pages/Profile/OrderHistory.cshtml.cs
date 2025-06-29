@@ -10,7 +10,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Profile
     {
         private readonly ICustomerRepository _customerRepository;
 
-        public IList<Customer> Customers { get; set; }
+        public IList<Customer> Customers { get; set; } = new List<Customer>();
 
         public OrderHistoryModel(ICustomerRepository customerRepository)
         {
@@ -19,8 +19,8 @@ namespace KE03_INTDEV_SE_1_Base.Pages.Profile
 
         public void OnGet()
         {
-            // Zorg dat dit klanten met orders ophaalt (incl. orders via Include)
-            Customers = _customerRepository.GetAllCustomers().ToList();
+            Customers = _customerRepository.GetAllCustomers()
+                .ToList(); // deze methode moet OrderItems + Product includen
         }
     }
 }

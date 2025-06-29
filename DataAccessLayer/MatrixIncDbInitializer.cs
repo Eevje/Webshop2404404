@@ -56,6 +56,16 @@ namespace DataAccessLayer
             };
             context.Parts.AddRange(parts);
 
+            var orderItems = new OrderItem[]
+            {
+                new OrderItem { Order = orders[0], Product = products[0], Quantity = 2 },
+                new OrderItem { Order = orders[0], Product = products[1], Quantity = 1 },
+                new OrderItem { Order = orders[1], Product = products[2], Quantity = 3 },
+                new OrderItem { Order = orders[2], Product = products[1], Quantity = 4 },
+                new OrderItem { Order = orders[3], Product = products[0], Quantity = 4 },
+            };
+            context.OrderItems.AddRange(orderItems);
+
             context.SaveChanges();
 
             context.Database.EnsureCreated();

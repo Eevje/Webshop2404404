@@ -21,6 +21,9 @@ namespace DataAccessLayer.Models
 
         public ICollection<Order> Orders { get; } = new List<Order>();
 
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
         public ICollection<Part> Parts { get; } = new List<Part>();
+
     }
 }

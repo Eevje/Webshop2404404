@@ -12,21 +12,47 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Klant</th>
-                <th>Aantal Orders</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var c in Model.Customers)
-            {
-                <tr>
-                    <td>@c.Name</td>
-                    <td>@c.Orders.Count()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var customer in Model.Customers)
+    {
+        <h4>@customer.Name</h4>
+
+        @if (customer.Orders == null || !customer.Orders.Any())
+        {
+            <p>Geen orders gevonden.</p>
+        }
+        else
+        {
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>Orderdatum</th>
+                        <th>Producten</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in customer.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderDate.ToString("dd-MM-yyyy")</td>
+                            <td>
+                                @if (order.OrderItems != null && order.OrderItems.Any())
+                                {
+                                    <ul class="mb-0">
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            <li>@item.Product?.Name (x @item.Quantity)</li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <em>Geen producten</em>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
 }
